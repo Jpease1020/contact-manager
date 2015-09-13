@@ -17,4 +17,9 @@ RSpec.describe PhoneNumber, type: :model do
     expect(phone_number).not_to be_valid
   end
 
+  it "is is associated with a person" do
+    phone_number.person_id = 1
+    expect(phone_number).to respond_to(:person)
+  end
+
 end
