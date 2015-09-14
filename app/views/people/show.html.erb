@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Contact</h1>
 <p>
   <strong>First name:</strong>
   <%= @person.first_name %>
@@ -10,13 +11,24 @@
   <%= @person.last_name %>
 </p>
 
+<h2> Phone Numbers </h2>
 <ul>
   <% @person.phone_numbers.each do |phone| %>
   <li><%= phone.number %> <%= link_to('edit', edit_phone_number_path(phone)) %> <%= link_to('delete', phone_number_path(phone), method: :delete) %></li>
   <% end %>
 </ul>
 
+<%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %>
 
-<%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %> |
+<h2> Email Addresses </h2>
+<ul>
+  <% @person.email_addresses.each do |address| %>
+  <li><%= address.email %> <%= link_to('edit', edit_email_address_path(address)) %> <%= link_to('delete', email_address_path(address), method: :delete) %></li>
+  <% end %>
+</ul>
+
+<p>
+<%= link_to 'Add email address', new_email_address_path(person_id: @person.id) %>
+</p>
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
